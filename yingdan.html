@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    <script type="text/javascript" src="mypublic/libs/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="mypublic/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="mypublic/css/common.css">
+    <link rel="stylesheet" type="text/css" href="mypublic/css/shopping.css">
+    <link rel="stylesheet" type="text/css" href="mypublic/pay/css/normalize.css" />
+    <link rel="stylesheet" type="text/css" href="mypublic/pay/fonts/font-awesome-4.2.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="mypublic/pay/css/demo.css" />
+    <link rel="stylesheet" type="text/css" href="mypublic/pay/css/checkout-cornerflat.css" />
+    <script type="text/javascript" src="mypublic/js/bootstrap.min.js"></script>
+    
+    <style type="text/css">
+    .myshopping {
+        width: 100%;
+        height: 340px;
+        padding: 20px;
+        overflow-x: hidden;
+        border: 1px solid #ccc;
+        margin: 0 0 40px 0;
+    }
+    
+    .myshopping .myimg {
+        padding: 0;
+        margin: 0;
+        background-color: #ddd;
+        height: 300px
+    }
+    
+    .myshopping .myimg img {
+        height: 100%;
+        width: 100%
+    }
+    
+    .myshopping .mytitle {
+        padding: 0px 15px;
+        margin: 0;
+        height: 300px;
+        overflow: hidden;
+        background-color: #fff;
+    }
+    
+    .myshopping .mytitle li {
+        margin: 5px 0
+    }
+    
+    .myshopping .mytitle span {
+        color: #888
+    }
+    
+    .myshopping .mytitle .jiage {
+        color: red;
+        font-size: 20px
+    }
+    
+    .myshopping .mytitle .ypjs {
+        height: 100px;
+        overflow: hidden;
+        white-space: normal;
+        text-overflow: hidden;
+        margin-bottom: 10px
+    }
+    
+    .myshopping .mytitle .tgj {
+        height: 50px;
+    }
+    
+    .myshopping .mytitle .ljgp {
+        height: 50px;
+        width: 100px;
+        text-align: center;
+        line-height: 50px;
+        border: 1px solid red;
+    }
+    
+    .dingdan_ip1_left>div {
+        background-color: rgba(0, 0, 0, 0.5);
+        padding: 10px 20px;
+        height: 340px;
+        color: rgba(255, 255, 255, 0.5);
+        margin: 0 0 40px 0;
+    }
+    
+    .dingdan_ip1_left li {
+        height: 80px
+    }
+    
+    .dingdan_ip1_left h2 {
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+        color: #fff
+    }
+    
+    .dingdan_ip1_left ul {
+        margin-top: 20px
+    }
+    
+    .dingdan_ip1_left .time {
+        font-size: 18px;
+        display: block;
+    }
+    
+    .dingdan_ip1_left .Ititle {
+        font-size: 18px;
+        color: rgba(0, 255, 255, 0.6);
+    }
+    
+    .emptyshopping {
+        font-size: 30px;
+    }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-default " id="nav" style="position: fixed;top: 0;z-index: 999999;width: 100%;height: 70px;">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="navbar-header col-lg-7  col-md-6 col-sm-8 col-xs-8">
+                        <a class="navbar-brand" href="#"><img src="mypublic/images/logo1.png" style="height: 50px;margin-top: -5px"></a>
+                    </div>
+                    <div class="col-lg-3 col-md-4 hidden-sm hidden-xs leaf1">
+                        <ul class="nav navbar-nav col-md-12 mynav">
+                            <li><a href="./index.html">影院首页</a></li>
+                            <li><a href="./tedian.html">影院介绍</a></li>
+                            <li><a href="./shopping.html">最新电影</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-4" style="text-align: center;">
+                        <ul class="nav navbar-nav col-md-12 col-sm-12 col-xs-12 row">
+                            <li class="col-xs-6"><a href="./yingdan.html">我的影单</a></li>
+                            <li class="col-xs-6"><a href="" id="ss">搜索</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="sshidden">
+                    <div class="searchbox mt1">
+                        <div class="search w960 center">
+                            <form name="formsearch">
+                                <div class="form">
+                                    <div class="form_left">
+                                        <div class="form_right">
+                                            <div id="searchtype" class="hidden-sm hidden-xs">
+                                                <div id="searchvalue">全部素材</div>
+                                                <div id="boult">▼</div>
+                                                <ul id="valuelist">
+                                                    <!-- style="display:none" -->
+                                                    <li title="1">全部素材</li>
+                                                    <li title="4">图片/壁纸</li>
+                                                    <li title="2">矢量</li>
+                                                    <li title="3">PSD</li>
+                                                    <li title="7">字体</li>
+                                                    <li title="5">网页模板</li>
+                                                    <li title="6">图标/Icon</li>
+                                                    <li title="10">PPT</li>
+                                                    <li title="9">音效</li>
+                                                    <li title="8">三维/3D</li>
+                                                    <li title="11">Flash</li>
+                                                    <li title="12">网页代码</li>
+                                                    <li title="13">笔刷/其他</li>
+                                                </ul>
+                                            </div>
+                                            <!-- <h4>搜索</h4> -->
+                                            <div class="ssk">
+                                                <input name="keyword" type="text" autocomplete="off" class="search-keyword" id="search-keyword" value="输入关键词" onfocus="if(this.value=='输入关键词'){this.value='';}" onblur="if(this.value==''){this.value='输入关键词';}" />
+                                                <button class="search-submit">搜索</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <ul id="hotwords" class="hotwords">
+                                        <!-- style="display:none" -->
+                                        <li class="hwtitle">每日热词TOP10：</li>
+                                        <li><a href='#'><h4>独立日：卷土重来</h4><span>13776次搜索</span></a></li>
+                                        <li><a href='#'><h4>海底总动员2：多莉去哪儿</h4><span>7821次搜索</span></a></li>
+                                        <li><a href='#'><h4>魔兽</h4><span>7783次搜索</span></a></li>
+                                        <li><a href='#'><h4>X战警：天启</h4><span>7669次搜索</span></a></li>
+                                        <li><a href='#'><h4>忍者神龟2：破影而出</h4><span>7490次搜索</span></a></li>
+                                        <li><a href='#'><h4>寒战Ⅱ</h4><span>7106次搜索</span></a></li>
+                                        <li><a href='#'><h4>快手枪手快枪手</h4><span>7793次搜索</span></a></li>
+                                        <!-- <li><a href='#'><h4>泰山归来：险战丛林</h4><span>7106次搜索</span></a></li>
+                        <li><a href='#'><h4>星际迷航：超越</h4><span>7106次搜索</span></a></li>
+                        <li><a href='#'><h4>X特遣队</h4><span>7106次搜索</span></a></li>
+                        <li><a href='#'><h4>深水地平线</h4><span>7106次搜索</span></a></li>
+                        <li><a href='#'><h4>奇异博士</h4><span>7106次搜索</span></a></li> -->
+                                    </ul>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="row hidden-lg hidden-md ">
+                    <ul class="nav navbar-nav col-sm-12 col-xs-12 mynav row " style="text-align: center;border-top: 1px solid #ccc;margin-top: 20px;">
+                        <li class="col-sm-4 col-xs-4"><a href="./index.html">影院首页</a></li>
+                        <li class="col-sm-4 col-xs-4"><a href="./tedian.html">影院介绍</a></li>
+                        <li class="col-sm-4 col-xs-4"><a href="./shopping.html">最新动态</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="mycontainer">
+        <section class="content">
+            <div class="dummy-browser">
+                <div class="dummy-header"></div>
+                <div class="checkout">
+                    <a class="checkout__button head-shopcart"  href="#">
+                        <!-- Fallback location -->
+                        <img src="mypublic/images/2011090113030444.png" style="width: 70px;height: 70px">
+
+                    </a>
+                    <div class="checkout__order ">
+                        <div class="checkout__order-inner">
+                            <table class="checkout__summary">
+                                <thead>
+                                    <tr>
+                                        <th>你的购物清单</th>
+                                        <th>价格</th>
+                                    </tr>
+                                </thead>
+                                <tfoot>
+                                    <tr>
+                                        <th colspan="2">总计 </th>
+                                    </tr>
+                                </tfoot>
+                                <tbody class="mBody" >
+                                </tbody>
+                            </table>
+                            <!-- /checkout__summary -->
+                            <button class="checkout__option checkout__option--silent checkout__cancel"><i class="fa fa-angle-left"></i> Continue Shopping</button>
+                            <a href="./mypublic/bing0427/index.html" class="checkout__option">Buy</a>
+                            <button class="checkout__close checkout__cancel"><i class="icon fa fa-fw fa-close"></i>Close</button>
+                        </div>
+                        <!-- /checkout__order-inner -->
+                    </div>
+                    <!-- /checkout__order -->
+                </div>
+                <!-- /checkout -->
+                <div class="dummy-grid dummy-grid--filled">
+                    <div id="dingdan_ip1" style="min-height: 400px;">
+                        <div class="row">
+                            <div class="dingdan_ip1_left hidden-sm hidden-xs col-md-2">
+                            </div>
+                            <div class="dingdan_ip1_right col-md-10 col-sm-12 col-xs-12">
+                            </div>
+                            <!-- <div class="dingdan_ip1_left col-md-2 col-sm-12 col-xs-12">
+                            </div> -->
+                        </div>
+                    </div>
+                </div>
+                <!-- /dummy-grid -->
+            </div>
+        </section>
+    </div>
+    <div class="scar"></div>
+    <!-- /container -->
+    <script src="mypublic/pay/js/classie.js"></script>
+    <script>
+    $(function() {
+        [].slice.call(document.querySelectorAll('.checkout')).forEach(function(el) {
+            var openCtrl = el.querySelector('.checkout__button'),
+                closeCtrls = el.querySelectorAll('.checkout__cancel');
+
+            openCtrl.addEventListener('click', function(ev) {
+                ev.preventDefault();
+                classie.add(el, 'checkout--active');
+            });
+
+            [].slice.call(closeCtrls).forEach(function(ctrl) {
+                ctrl.addEventListener('click', function() {
+                    classie.remove(el, 'checkout--active');
+                });
+            });
+        });
+    });
+    </script>
+    <footer style="width: 100%;height: 260px;background-color: #222;color: #fff;text-align: center;padding-top: 80px">
+        <div>
+            <ul></ul>
+            <p>IMAX®和The IMAX Experience®是IMAX公司的注册商标</p>
+            <p>使用条款 隐私政策</p>
+            <p>沪ICP备11045714号 沪公网安备 31010102002067号</p>
+        </div>
+    </footer>
+    <script type="text/javascript" src="mypublic/libs/jquery-min.js"></script>
+    <script type="text/javascript" src="mypublic/js/index.js"></script>
+    <script type="text/javascript">
+    var i = 1;
+    var myttindex = window.location.search;
+
+    $.ajax({
+        type: 'get',
+        //url:'http://huaqingqing.github.io/animate/params.json',
+        url: 'https://xinkaiwen.github.io/mydatabase/params.json',
+        // url: 'http://127.0.0.1:8080/database/database.json',
+        dataType: 'json',
+        // jsonp: 'callback',
+        // jsonpCallback: "successCallback",
+        success: function(data) {
+            $("<span class='checkout__total'></span>") .appendTo("tfoot tr th");
+            //console.log(data);
+            // console.log(myttindex);
+            var aa = myttindex.indexOf("=") + 1;
+            var c=null;
+            //alert(aa);
+            var relids = myttindex.substring(aa);
+            console.log(relids);
+            if (relids === '') {
+                $("<div class='row emptyshopping'>你还没有添加影单<a href='./shopping.html'>马上去看看？</a></div>").appendTo($(".dingdan_ip1_right"));
+            }
+            var relid = relids.split(",");
+            console.log(relid);
+
+            for (var i = 0; i < relid.length; i++) {
+                console.log(data[relid[i]].src);
+                console.log(data[relid[i]].name);
+
+                if (data[relid[i]].src === 'undefined') {
+                    alert('aaa')
+                }
+                $("<div class='row myshopping' style='text-align:left'><div class='col-md-4 myimg'><img src=" + data[relid[i]].src + "></div><div class='col-md-8 mytitle'><ul><li><h3>" + data[relid[i]].name + "</h3></li><li><span>主演：</span>" + data[relid[i]].zhuyan + "</li><li class='ypjs'><span>影片介绍：</span>" + data[relid[i]].jianjie + "</li><li class='tgj'><span>团购价：</span><span class='jiage'>" + data[relid[i]].price + "</span></li><li class='ljgp btn-buy'>立即购票</li></ul></div></div>").appendTo($(".dingdan_ip1_right"));
+                $("<div style='text-align:left'><h2>" + data[relid[i]].name + "</h2><ul><li><span class='time'>2016年06月06日</span><span class='Ititle'>IMAX专属海报</span></li><li><span class='time'>2016年06月06日</span><span class='Ititle'>IMAX专属海报</span></li><li><span class='time'>2016年06月06日</span><span class='Ititle'>IMAX专属海报</span></li></ul>").appendTo(".dingdan_ip1_left");
+
+            }
+            var arrc = [];
+            $(".ljgp").click(function() {
+                var a = $(this).prev().prev().prev().prev().children("h3").html();
+                // alert(a);
+                var mm = $(this).parent().parent().parent().index();
+            var t=$('.head-shopcart').offset().top;
+            var l=$('.head-shopcart').offset().left;
+
+        var img = $(this).parent().parent().prev().find('img');
+        var flyElm = img.clone().css('opacity', 0.75);
+        $('.scar').append(flyElm);
+        flyElm.css({
+            'z-index': 9000,
+            'display': 'block',
+            'position': 'absolute',
+            'top': img.offset().top +'px',
+            'left': img.offset().left +'px',
+            'width': img.width() +'px',
+            'height': img.height() +'px'
+        });
+        flyElm.animate({
+            top: t,
+            left: l,
+            width: 80,
+            height: 80
+        }, 'slow', function() {
+            flyElm.remove();
+        });
+                // var b = parseInt(a.slice(1));
+                // location.href="./pay.html?name="+a;
+                for (var j = 0; j < data.length; j++) {
+                    if (data[j].name === a) {
+                        // arrc.push(j)
+                        $("<tr><td><img src="+data[j].src+" style='width:70px;height:70px;opcity:0.8;'><span>"+data[j].name+"</span></td><td>"+data[j].price+"</td></tr>").appendTo("tbody");
+                    arrc.push(data[j].price);
+                    continue;
+                    }
+                }
+                var arrd=[];
+                var a=0;
+                for(var j=0;j<arrc.length;j++){
+                     a+=parseInt(arrc[j].slice(1));
+                     // continue;
+                     arrd.push(a);
+
+                };
+                var le=arrd.length-1;
+               c=parseInt(arrd[le]);
+                console.log(c);
+                 // $("<span class='checkout__total'></span>").html('').appendTo("tfoot tr th")
+                // $("<span")
+                 
+          $(".checkout__total").html(c).stop();  
+               
+            })
+
+
+
+        },
+        error: function(XMLHttpRequest, textStatus, errorThrown) {
+            var a = XMLHttpRequest.responseText;
+
+
+        }
+    });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,9 @@
+.section-mask .section-picbox-content .section-right-pic {
+	// width:700px;
+	height:450px;
+	position: absolute;
+	z-index: 9999;
+	margin-left: 300px;
+	top: 33px;
+	overflow: hidden;
+}

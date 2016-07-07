@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="zh" class="no-js">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>html5炫酷购物车结算动画特效 | Demo: Boxes_jQuery之家-自由分享jQuery、html5、css3的插件库</title>
+    <link rel="stylesheet" type="text/css" href="css/normalize.css" />
+    <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.2.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/demo.css" />
+    <link rel="stylesheet" type="text/css" href="css/checkout-boxes.css" />
+    <!--[if IE]>
+  		<script src="http://libs.useso.com/js/html5shiv/3.7/html5shiv.min.js"></script>
+		<![endif]-->
+</head>
+
+<body class="color-1">
+    <div class="container">
+        <section class="content">
+            <div class="dummy-browser">
+                <div class="dummy-browser--inner">
+                    <div class="dummy-header"></div>
+                    <div class="checkout">
+                        <div class="checkout-grid">
+                            <div class="checkout-grid__item"><img src="img/s1.png" alt="Shirt" />
+                                <h4>T-Shirt</h4><span class="price">$19.90</span>
+                                <button class="checkout-grid__item-remove"><i class="icon fa fa-close"></i></button>
+                            </div>
+                            <div class="checkout-grid__item"><img src="img/s2.png" alt="Shirt" />
+                                <h4>T-Shirt</h4><span class="price">$19.90</span>
+                                <button class="checkout-grid__item-remove"><i class="icon fa fa-close"></i></button>
+                            </div>
+                            <div class="checkout-grid__item"><img src="img/s3.png" alt="Shirt" />
+                                <h4>T-Shirt </h4><span class="price">$29.90</span>
+                                <button class="checkout-grid__item-remove"><i class="icon fa fa-close"></i></button>
+                            </div>
+                            <div class="checkout-grid__item checkout-grid__item--summary">
+                                <button class="checkout__close checkout__cancel"><i class="icon fa fa-close"></i></button>
+                                <div class="checkout__total">$219.30</div>
+                                <button class="checkout__option checkout__option--loud">Buy</button>
+                                <button class="checkout__option checkout__option--silent checkout__cancel">or continue shopping <i class="fa fa-angle-right"></i></button>
+                                <a class="checkout__button" href="#">
+                                    <!-- Fallback location -->
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /checkout -->
+                    <div class="dummy-grid dummy-grid--filled">
+                        <!-- <div class="dummy-grid__item"></div> -->
+                        <div style="background-color: red;width: 100%;height: 100px;">
+                            <div class="row">
+                                <div class="dingdan_ip1_left hidden-sm hidden-xs col-md-2">
+                                </div>
+                                <div class="dingdan_ip1_right col-md-10 col-sm-12 col-xs-12">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /dummy-grid -->
+                </div>
+            </div>
+        </section>
+    </div>
+    <!-- /container -->
+    <script type="text/javascript" src="../libs/jquery.min.js"></script>
+    <script src="js/classie.js"></script>
+    <script type="text/javascript" src="mypublic/js/bootstrap.min.js"></script>
+    <script>
+    (function() {
+        [].slice.call(document.querySelectorAll('.checkout')).forEach(function(el) {
+            var openCtrl = el.querySelector('.checkout__button'),
+                closeCtrls = el.querySelectorAll('.checkout__cancel');
+
+            openCtrl.addEventListener('click', function(ev) {
+                ev.preventDefault();
+                classie.add(el, 'checkout--active');
+            });
+
+            [].slice.call(closeCtrls).forEach(function(ctrl) {
+                ctrl.addEventListener('click', function() {
+                    classie.remove(el, 'checkout--active');
+                });
+            });
+        });
+    })();
+    // var i = 1;
+
+    // alert(relid);
+    $.ajax({
+        type: 'get',
+        // url: 'https://xinkaiwen.github.io/mydatabase/params.json',
+        url: 'http://127.0.0.1:8080/database/database.json',
+        dataType: 'json',
+        // jsonp: 'callback',
+        // jsonpCallback: "successCallback",
+        success: function(data) {
+            var myttindex = decodeURI(window.location.search);
+            var aa = myttindex.indexOf("=") + 1;
+            var relids = myttindex.substring(aa);
+            var relid = relids.split(",")[0];
+            if (relids === '') {
+                $("<div class='row emptyshopping'>你还没有添加影单<a href='./shopping.html'>马上去看看？</a></div>").appendTo($(".dingdan_ip1_right"));
+            }
+            var arr2=[];
+            for (var i = 0; i < data.length; i++) {
+            	if (data[i].name===relid) {
+            		arr2.push(i);
+            	}
+            }
+            console.log(arr2);
+            for(var j = 0;j<arr2.length;j++){
+            	// $("<div class='row myshopping'><div class='col-md-4 myimg'><img src=" + data[j].src + "></div><div class='col-md-8 mytitle'><ul><li><h3>" + data[j].name + "</h3></li><li><span>主演：</span>" + data[j].zhuyan + "</li><li class='ypjs'><span>影片介绍：</span>" + data[j].jianjie + "</li><li class='tgj'><span>团购价：</span><span class='jiage'>" + data[j].price + "</span></li><li class='ljgp'>立即购票</li></ul></div></div>").appendTo($(".dingdan_ip1_right"));
+            }
+
+
+        },
+        error: function(XMLHttpRequest, textStatus, errorThrown) {
+            var a = XMLHttpRequest.responseText;
+
+
+        }
+    });
+    </script>
+</body>
+
+</html>

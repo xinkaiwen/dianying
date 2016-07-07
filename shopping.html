@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    <script type="text/javascript" src="mypublic/libs/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="mypublic/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="mypublic/css/common.css">
+    <link rel="stylesheet" type="text/css" href="mypublic/css/shopping.css">
+    <link rel="stylesheet" type="text/css" href="mypublic/css/swiper.css">
+    <style type="text/css">
+        .head-shopcart{
+           color: rgba(0,255,255,1);position: absolute;right: 0;top: 0;font-size: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-default " id="nav" style="position: fixed;top: 0;z-index: 999999;width: 100%;height: 70px;">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="navbar-header col-lg-7  col-md-6 col-sm-8 col-xs-8">
+                        <a class="navbar-brand" href="#"><img src="mypublic/images/logo1.png" style="height: 50px;margin-top: -5px"></a>
+                    </div>
+                    <div class="col-lg-3 col-md-4 hidden-sm hidden-xs leaf1">
+                        <ul class="nav navbar-nav col-md-12 mynav">
+                            <li><a href="./index.html">影院首页</a></li>
+                            <li><a href="./tedian.html">影院介绍</a></li>
+                            <li><a href="./shopping.html">最新电影</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-4" style="text-align: center;">
+                        <ul class="nav navbar-nav col-md-12 col-sm-12 col-xs-12 row">
+                            <li class="col-xs-6"><a href="javascript:void(0)" id="myyd">我的影单</a></li>
+                            <li class="col-xs-6"><a href="" id="ss">搜索</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="sshidden">
+                    <div class="searchbox mt1">
+                        <div class="search w960 center">
+                            <form name="formsearch">
+                                <div class="form">
+                                    <div class="form_left">
+                                        <div class="form_right">
+                                            <div id="searchtype" class="hidden-sm hidden-xs">
+                                                <div id="searchvalue">全部素材</div>
+                                                <div id="boult">▼</div>
+                                                <ul id="valuelist">
+                                                    <!-- style="display:none" -->
+                                                    <li title="1">全部素材</li>
+                                                    <li title="4">图片/壁纸</li>
+                                                    <li title="2">矢量</li>
+                                                    <li title="3">PSD</li>
+                                                    <li title="7">字体</li>
+                                                    <li title="5">网页模板</li>
+                                                    <li title="6">图标/Icon</li>
+                                                    <li title="10">PPT</li>
+                                                    <li title="9">音效</li>
+                                                    <li title="8">三维/3D</li>
+                                                    <li title="11">Flash</li>
+                                                    <li title="12">网页代码</li>
+                                                    <li title="13">笔刷/其他</li>
+                                                </ul>
+                                            </div>
+                                            <!-- <h4>搜索</h4> -->
+                                            <div class="ssk">
+                                                <input name="keyword" type="text" autocomplete="off" class="search-keyword" id="search-keyword" value="输入关键词" onfocus="if(this.value=='输入关键词'){this.value='';}" onblur="if(this.value==''){this.value='输入关键词';}" />
+                                                <button type="submit" class="search-submit" onclick="return checkinput()">
+                                                    搜索</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <ul id="hotwords" class="hotwords">
+                                        <!-- style="display:none" -->
+                                        <li class="hwtitle">每日热词TOP10：</li>
+                                        <li><a href='#'><h4>独立日：卷土重来</h4><span>13776次搜索</span></a></li>
+                                        <li><a href='#'><h4>海底总动员2：多莉去哪儿</h4><span>7821次搜索</span></a></li>
+                                        <li><a href='#'><h4>魔兽</h4><span>7783次搜索</span></a></li>
+                                        <li><a href='#'><h4>X战警：天启</h4><span>7669次搜索</span></a></li>
+                                        <li><a href='#'><h4>忍者神龟2：破影而出</h4><span>7490次搜索</span></a></li>
+                                        <li><a href='#'><h4>寒战Ⅱ</h4><span>7106次搜索</span></a></li>
+                                        <li><a href='#'><h4>快手枪手快枪手</h4><span>7793次搜索</span></a></li>
+                                        <!-- <li><a href='#'><h4>泰山归来：险战丛林</h4><span>7106次搜索</span></a></li>
+                        <li><a href='#'><h4>星际迷航：超越</h4><span>7106次搜索</span></a></li>
+                        <li><a href='#'><h4>X特遣队</h4><span>7106次搜索</span></a></li>
+                        <li><a href='#'><h4>深水地平线</h4><span>7106次搜索</span></a></li>
+                        <li><a href='#'><h4>奇异博士</h4><span>7106次搜索</span></a></li> -->
+                                    </ul>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="row hidden-lg hidden-md ">
+                    <ul class="nav navbar-nav col-sm-12 col-xs-12 mynav row " style="text-align: center;border-top: 1px solid #ccc;margin-top: 20px;">
+                        <li class="col-sm-4 col-xs-4"><a href="./index.html">影院首页</a></li>
+                        <li class="col-sm-4 col-xs-4"><a href="./tedian.html">影院介绍</a></li>
+                        <li class="col-sm-4 col-xs-4"><a href="./shopping.html">最新动态</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="mycontainer">
+        
+        
+        <div id="shopping_ip1">
+            <div class="row">
+                <div class="shopping_ip1_left hidden-sm hidden-xs col-md-3">
+                    <div>
+                        <p>影讯</p>
+                        <ul>
+                            <li>
+                                <span class="time">2016年06月06日</span>
+                                <span class="Ititle">《独立日：卷土重来》IMAX专属海报</span>
+                            </li>
+                            <li>
+                                <span class="time">2016年06月06日</span>
+                                <span class="Ititle">《独立日：卷土重来》IMAX专属海报</span>
+                            </li>
+                            <li>
+                                <span class="time">2016年06月06日</span>
+                                <span class="Ititle">《独立日：卷土重来》IMAX专属海报</span>
+                            </li>
+                            <li>
+                                <span class="time">2016年06月06日</span>
+                                <span class="Ititle">《独立日：卷土重来》IMAX专属海报</span>
+                            </li>
+                            <li>
+                                <span class="time">2016年06月06日</span>
+                                <span class="Ititle">《独立日：卷土重来》IMAX专属海报</span>
+                            </li>
+                            <li>
+                                <span class="time">2016年06月06日</span>
+                                <span class="Ititle">《独立日：卷土重来》IMAX专属海报</span>
+                            </li>
+                            <li>
+                                <span class="time">2016年06月06日</span>
+                                <span class="Ititle">《独立日：卷土重来》IMAX专属海报</span>
+                            </li>
+                            <li>
+                                <span class="time">2016年06月06日</span>
+                                <span class="Ititle">《独立日：卷土重来》IMAX专属海报</span>
+                            </li>
+                            <li>
+                                <span class="time">2016年06月06日</span>
+                                <span class="Ititle">《独立日：卷土重来》IMAX专属海报</span>
+                            </li>
+                            <li>
+                                <span class="time">2016年05月26日</span>
+                                <span class="Ititle">《魔兽》IMAX专属海报</span>
+                            </li>
+                            <li>
+                                <span class="time">2016年05月19日</span>
+                                <span class="Ititle">《X战警: 天启》IMAX专属海报</span></li>
+                            <li>
+                                <span class="time">2016年05月12日</span>
+                                <span class="Ititle">IMAX赋予萌娃超能量</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="shopping_ip1_right col-md-9 col-sm-12 col-xs-12">
+                    <div class="row myshopping">
+                        <ul class="myshoppingli">
+                            <li class="col-md-4 box" id="aa">
+                                <a href="mypublic/images/shopping_dlr.jpg" class="swipebox">
+                                    
+                                    <img src="mypublic/images/shopping_dlr.jpg">
+                                </a>
+                                <div class="ying_content">
+                                    <h4>独立日：卷土重来</h4>
+                                    <a href="javascript:void(0)" id="ckxq">查看详情</a>
+                                    <span class="btn-buy">添加影单</span>
+                                </div>
+                                <div class="head-shopcart glyphicon glyphicon-grain">
+                                    
+                                </div>
+                            </li>
+                            <li class="col-md-4 box">
+                                <a href="mypublic/images/shopping_hdzdy.jpg" class="swipebox">
+                                    <img src="mypublic/images/shopping_hdzdy.jpg">
+                                </a>
+                                <div class="ying_content">
+                                    <h4>海底总动员2：多莉去哪儿</h4>
+                                    <a href="javascript:void(0)" id="ckxq">查看详情</a>
+                                    <span class="btn-buy">添加影单</span>
+
+                                </div>
+                                <div class="head-shopcart glyphicon glyphicon-grain">
+                                    
+                                </div>
+                            </li>
+                            <li class="col-md-4 box">
+                                <a href="mypublic/images/shopping_ms.jpg" class="swipebox">
+                                    <img src="mypublic/images/shopping_ms.jpg">
+                                </a>
+                                <div class="ying_content">
+                                    <h4>魔兽</h4>
+                                    <a href="javascript:void(0)" id="ckxq">查看详情</a>
+                                    <span class="btn-buy">添加影单</span>
+                                </div>
+                                <div class="head-shopcart glyphicon glyphicon-grain">
+                                   
+                                </div>
+                            </li>
+                            <li class="col-md-4 box">
+                                <a href="mypublic/images/shopping_xzj.jpg" class="swipebox">
+                                    <img src="mypublic/images/shopping_xzj.jpg">
+                                </a>
+                                <div class="ying_content">
+                                    <h4>X战警：天启</h4>
+                                    <a href="javascript:void(0)" id="ckxq">查看详情</a>
+                                    <span>添加影单</span>
+                                </div>
+                                <div class="head-shopcart glyphicon glyphicon-grain">
+                                    
+                                </div>
+                            </li>
+                            <li class="col-md-4 box">
+                                <a href="mypublic/images/shopping_rzsg.jpg" class="swipebox">
+                                    <img src="mypublic/images/shopping_rzsg.jpg">
+                                </a>
+                                <div class="ying_content">
+                                    <h4>忍者神龟2：破影而出</h4>
+                                    <a href="javascript:void(0)" id="ckxq">查看详情</a>
+                                    <span class="btn-buy">添加影单</span>
+                                </div>
+                                <div class="head-shopcart glyphicon glyphicon-grain">
+                                    
+                                </div>
+                            </li>
+                            <li class="col-md-4 box">
+                                <a href="mypublic/images/shopping_hz.jpg" class="swipebox">
+                                    <img src="mypublic/images/shopping_hz.jpg">
+                                </a>
+                                <div class="ying_content">
+                                    <h4>寒战Ⅱ</h4>
+                                    <a href="javascript:void(0)" id="ckxq">查看详情</a>
+                                    <span class="btn-buy">添加影单</span>
+                                </div>
+                                <div class="head-shopcart glyphicon glyphicon-grain">
+                                    
+                                </div>
+                            </li>
+                            <li class="col-md-4 box">
+                                <a href="mypublic/images/shopping_ksqskqs.jpg" class="swipebox">
+                                    <img src="mypublic/images/shopping_ksqskqs.jpg">
+                                </a>
+                                <div class="ying_content">
+                                    <h4>快手枪手快枪手</h4>
+                                    <a href="javascript:void(0)" id="ckxq">查看详情</a>
+                                    <span class="btn-buy">添加影单</span>
+                                </div>
+                                <div class="head-shopcart glyphicon glyphicon-grain">
+                                    
+                                </div>
+                            </li>
+                            <li class="col-md-4 box">
+                                <a href="mypublic/images/shopping_tsgl.jpg" class="swipebox">
+                                    <img src="mypublic/images/shopping_tsgl.jpg">
+                                </a>
+                                <div class="ying_content">
+                                    <h4>泰山归来：险战丛林</h4>
+                                    <a href="javascript:void(0)" id="ckxq">查看详情</a>
+                                    <span class="btn-buy">添加影单</span>
+                                </div>
+                                <div class="head-shopcart glyphicon glyphicon-grain">
+                                    
+                                </div>
+                            </li>
+                            <li class="col-md-4 box">
+                                <a href="mypublic/images/shopping_xjmh.jpg" class="swipebox">
+                                    <img src="mypublic/images/shopping_xjmh.jpg">
+                                </a>
+                                <div class="ying_content">
+                                    <h4>星际迷航：超越</h4>
+                                    <a href="javascript:void(0)" id="ckxq">查看详情</a>
+                                    <span class="btn-buy">添加影单</span>
+                                </div>
+                                <div class="head-shopcart glyphicon glyphicon-grain">
+                                    
+                                </div>
+                            </li>
+                            <li class="col-md-4 box">
+                                <a href="" class="swipebox">
+                                    <img src="mypublic/images/shopping_xtqd.jpg">
+                                </a>
+                                <div class="ying_content">
+                                    <h4>X特遣队</h4>
+                                    <a href="javascript:void(0)" id="ckxq">查看详情</a>
+                                    <span class="btn-buy">添加影单</span>
+                                </div>
+                                <div class="head-shopcart glyphicon glyphicon-grain">
+                                    
+                                </div>
+                            </li>
+                            <li class="col-md-4 box">
+                                <a href="mypublic/images/shopping_ssdpx.jpg" class="swipebox">
+                                    <img src="mypublic/images/shopping_ssdpx.jpg">
+                                </a>
+                                <div class="ying_content">
+                                    <h4>深水地平线</h4>
+                                    <a href="javascript:void(0)" id="ckxq">查看详情</a>
+                                    <span class="btn-buy">添加影单</span>
+                                </div>
+                                <div class="head-shopcart glyphicon glyphicon-grain">
+                                    
+                                </div>
+                            </li>
+                            <li class="col-md-4 box">
+                                <a href="mypublic/images/shopping_qybs.jpg" class="swipebox">
+                                    <img src="mypublic/images/shopping_qybs.jpg">
+                                </a>
+                                <div class="ying_content">
+                                    <h4>奇异博士</h4>
+                                    <a href="javascript:void(0)" id="ckxq">查看详情</a>
+                                    <span class="btn-buy">添加影单</span>
+                                </div>
+                                <div class="head-shopcart glyphicon glyphicon-grain">
+                                    
+                                </div>
+                            </li>
+                        </ul>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="scar">
+        
+    </div>
+    <footer style="width: 100%;height: 260px;background-color: #222;color: #fff;text-align: center;padding-top: 80px">
+        <div>
+            <ul></ul>
+            <p>IMAX®和The IMAX Experience®是IMAX公司的注册商标</p>
+            <p>使用条款 隐私政策</p>
+            <p>沪ICP备11045714号 沪公网安备 31010102002067号</p>
+        </div>
+    </footer>
+    <script type="text/javascript" src="mypublic/libs/jquery-min.js"></script>
+    <script type="text/javascript" src="mypublic/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="mypublic/js/index.js"></script>
+    <script type="text/javascript" src="mypublic/js/jquery.swipebox.min.js"></script>
+    <script type="text/javascript">
+    $(function(){
+
+            $(".swipebox").swipebox();
+        
+        var arr=[];
+        var relarr=[];
+        
+        $(".myshoppingli li").click(function(){
+             var i = $(this).index();
+
+             arr.push(i);
+           
+             console.log(arr);
+            
+
+
+        })
+        $("#myyd").click(function(){
+            location.href='yingdan.html?ttindex='+arr;
+        })
+        $("#ckxq").click(function(){
+            var myxx=$(this).parent().parent().index();
+            location.href='xx.html?ttindex='+myxx;
+            alert(myxx);
+        })
+
+        $('.btn-buy').bind('click',function(){
+            var i = $(this).parent().parent().index();
+            var t=$('.head-shopcart').eq(i).offset().top;
+            var l=$('.head-shopcart').eq(i).offset().left;
+
+        var img = $(this).parent().parent().find('img');
+        var flyElm = img.clone().css('opacity', 0.75);
+        $('.scar').append(flyElm);
+        flyElm.css({
+            'z-index': 9000,
+            'display': 'block',
+            'position': 'absolute',
+            'top': img.offset().top +'px',
+            'left': img.offset().left +'px',
+            'width': img.width() +'px',
+            'height': img.height() +'px'
+        });
+        flyElm.animate({
+            top: t,
+            left: l,
+            width: 20,
+            height: 32
+        }, 'slow', function() {
+            flyElm.remove();
+        });
+    }); 
+    })
+        
+    </script>
+</body>
+
+</html>

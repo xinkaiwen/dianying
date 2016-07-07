@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    <script type="text/javascript" src="mypublic/libs/jquery.min.js"></script>
+    <script type="text/javascript" src="mypublic/js/jquery.lazyload.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="mypublic/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="mypublic/css/common.css">
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-default " id="nav" style="position: fixed;top: 0;z-index: 999999;width: 100%;height: 70px;">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="navbar-header col-lg-7  col-md-6 col-sm-8 col-xs-8">
+                        <a class="navbar-brand" href="#"><img src="mypublic/images/logo1.png" style="height: 50px;margin-top: -5px"></a>
+                    </div>
+                    <div class="col-lg-3 col-md-4 hidden-sm hidden-xs leaf1">
+                        <ul class="nav navbar-nav col-md-12 mynav">
+                            <li><a href="./index.html">影院首页</a></li>
+                            <li><a href="./tedian.html">影院介绍</a></li>
+                            <li><a href="./shopping.html">最新电影</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-4" style="text-align: center;">
+                        <ul class="nav navbar-nav col-md-12 col-sm-12 col-xs-12 row">
+                            <li class="col-xs-6"><a href="./yingdan.html">我的影单</a></li>
+                            <li class="col-xs-6"><a href="" id="ss">搜索</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="sshidden">
+                    <div class="searchbox mt1">
+                        <div class="search w960 center">
+                            <form name="formsearch">
+                                <div class="form">
+                                    <div class="form_left">
+                                        <div class="form_right">
+                                            <div id="searchtype" class="hidden-sm hidden-xs">
+                                                <div id="searchvalue">全部素材</div>
+                                                <div id="boult">▼</div>
+                                                <ul id="valuelist">
+                                                    <!-- style="display:none" -->
+                                                    <li title="1">全部素材</li>
+                                                    <li title="4">图片/壁纸</li>
+                                                    <li title="2">矢量</li>
+                                                    <li title="3">PSD</li>
+                                                    <li title="7">字体</li>
+                                                    <li title="5">网页模板</li>
+                                                    <li title="6">图标/Icon</li>
+                                                    <li title="10">PPT</li>
+                                                    <li title="9">音效</li>
+                                                    <li title="8">三维/3D</li>
+                                                    <li title="11">Flash</li>
+                                                    <li title="12">网页代码</li>
+                                                    <li title="13">笔刷/其他</li>
+                                                </ul>
+                                            </div>
+                                            <!-- <h4>搜索</h4> -->
+                                            <div class="ssk">
+                                                <input name="keyword" type="text" autocomplete="off" class="search-keyword" id="search-keyword" value="输入关键词" onfocus="if(this.value=='输入关键词'){this.value='';}" onblur="if(this.value==''){this.value='输入关键词';}" />
+                                                <button type="submit" class="search-submit" onclick="return checkinput()">
+                                                    搜索</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <ul id="hotwords" class="hotwords">
+                                        <!-- style="display:none" -->
+                                        <li class="hwtitle">每日热词TOP10：</li>
+                                        <li><a href='#'><h4>独立日：卷土重来</h4><span>13776次搜索</span></a></li>
+                                        <li><a href='#'><h4>海底总动员2：多莉去哪儿</h4><span>7821次搜索</span></a></li>
+                                        <li><a href='#'><h4>魔兽</h4><span>7783次搜索</span></a></li>
+                                        <li><a href='#'><h4>X战警：天启</h4><span>7669次搜索</span></a></li>
+                                        <li><a href='#'><h4>忍者神龟2：破影而出</h4><span>7490次搜索</span></a></li>
+                                        <li><a href='#'><h4>寒战Ⅱ</h4><span>7106次搜索</span></a></li>
+                                        <li><a href='#'><h4>快手枪手快枪手</h4><span>7793次搜索</span></a></li>
+                                        <!-- <li><a href='#'><h4>泰山归来：险战丛林</h4><span>7106次搜索</span></a></li>
+                        <li><a href='#'><h4>星际迷航：超越</h4><span>7106次搜索</span></a></li>
+                        <li><a href='#'><h4>X特遣队</h4><span>7106次搜索</span></a></li>
+                        <li><a href='#'><h4>深水地平线</h4><span>7106次搜索</span></a></li>
+                        <li><a href='#'><h4>奇异博士</h4><span>7106次搜索</span></a></li> -->
+                                    </ul>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="row hidden-lg hidden-md ">
+                    <ul class="nav navbar-nav col-sm-12 col-xs-12 mynav row " style="text-align: center;border-top: 1px solid #ccc;margin-top: 20px;">
+                        <li class="col-sm-4 col-xs-4"><a href="./index.html">影院首页</a></li>
+                        <li class="col-sm-4 col-xs-4"><a href="./tedian.html">影院介绍</a></li>
+                        <li class="col-sm-4 col-xs-4"><a href="./shopping.html">最新动态</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div style="width: 100%;height: auto;position: relative;top:45px;margin-bottom: 280px;z-index: 99;background-color: #000" id="tedian">
+        <div id="tedian_ip1">
+            <div>
+                <video autoplay width="160%" style="">
+                    <source src="mypublic/images/IMAX_Dif_Intro_StarWars.webm" type="video/webm">
+                </video>
+            </div>
+            <div id="tedian_ip1_font">
+                <h1>
+            		更大的银幕
+            	</h1>
+                <h1>
+            		仅仅是个开始
+            	</h1>
+            </div>
+        </div>
+        <div id="tedian_ip2">
+            <hr/>my
+            <div>
+                <h1 class="myh11">更深入地体验</h1>
+                <h1 class="myh12">世界上更具创新力的</h1>
+                <h1 class="myh13">观影体验</h1>
+            </div>
+            <hr/>
+        </div>
+        <div id="video2">
+            <video autoplay width="100%" loop>
+                <source src="mypublic/images/IMAX_Dif_Interstellar.webm" type="video/webm">
+            </video>
+        </div>
+        <div id="tedian_ip3">
+            <div class="tedian_ip3_con">
+                <div class="tedian_ip3_top">
+                    <h4>观影特点</h4>
+                    <h1>震撼心灵的音频</h1>
+                </div>
+                <div class="tedian_ip3_c">
+                    <ul class="row">
+                        <li class="col-md-4">
+                        	<img  data-original="mypublic/images/Pitch_Perfect_Tuning.gif">
+                            <h4>音准精确的调音</h4>
+                            <span>调音始终精准到位</span>
+                        </li>
+                        <li class="col-md-4">
+                            <img data-original="mypublic/images/Pin_Point_Accuracy.gif">
+                            <h4>音准精确的调音</h4>
+                            <span>调音始终精准到位</span>
+                        </li>
+                        <li class="col-md-4">
+                            <img data-original="mypublic/images/endless_sweet_spot.gif">
+                            <h4>音准精确的调音</h4>
+                            <span>调音始终精准到位</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="tedian_ip3_bottom">
+                    <p>巨大的爆炸声，肩后传来的低语，感到却非听到的隆隆低音，我们经过准确调音的集成音响系统结合精确定向的扬声器，使您能够听见一根大头针掉落在地的声响，并且清楚辨别它掉落的确切位置。在导演的督导下，每一部电影的声音都经过重新校准，包括电影原声的每一个音符，以及鞋子每一次划过地面发出的声响。所有这些声音继而在为优化体验而定制的IMAX影院中得以呈现。</p>
+                </div>
+            </div>
+        </div>
+        <div id="video3">
+        	<video autoplay width="100%" loop>
+                <source src="mypublic/images/IMAX_Dif_Moving Pictures.webm" type="video/webm">
+            </video>
+        </div>
+        <div id="tedian_ip4">
+            <div class="tedian_ip4_con">
+                <div class="tedian_ip4_top">
+                    <h4>观影特点</h4>
+                    <h1>令人惊叹的画面</h1>
+                </div>
+                <div class="tedian_ip4_c">
+                    <ul class="row">
+                        <li class="col-md-4">
+                            <img data-original="mypublic/images/Dual_Projection.gif">
+
+                            
+                            <h4>音准精确的调音</h4>
+                            <span>调音始终精准到位</span>
+                        </li>
+                        <li class="col-md-4">
+                        	<img data-original="mypublic/images/hand_crafted_re-mastering.gif">
+                            
+                            <h4>音准精确的调音</h4>
+                            <span>调音始终精准到位</span>
+                        </li>
+                        <li class="col-md-4">
+                            
+                            <img data-original="mypublic/images/Heightened_Realism.gif">
+                            <h4>音准精确的调音</h4>
+                            <span>调音始终精准到位</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="tedian_ip4_bottom">
+                    <p>从清晰度、细节到尺寸都使IMAX远远超出了简单电影的范畴。我们以IMAX的DMR®数字原底翻版技术精心转制电影的每一帧画面，力求以更佳效果呈现导演的拍摄意图。双机放映投射出更优质的图像，实现暖色调与清晰度之间的平衡。IMAX让您以更佳的方式体验真实。</p>
+                </div>
+            </div>
+        </div>
+        <div id="video4">
+        	<video autoplay width="100%" loop>
+                <source src="mypublic/images/IMAX_Dif_Immersive_Experiences.webm" type="video/webm">
+            </video>
+        </div>
+        <div id="tedian_ip5">
+            <div class="tedian_ip5_con">
+                <div class="tedian_ip5_top">
+                    <h4>观影特点</h4>
+                    <h1>身临其境般的体验</h1>
+                </div>
+                <div class="tedian_ip5_c">
+                    <ul class="row">
+                        <li class="col-md-4">
+                            <img data-original="mypublic/images/remote_monitoring.gif">
+                            <h4>远程监控</h4>
+                            <span>全天候监控，以实现更佳性能</span>
+                        </li>
+                        <li class="col-md-4">
+                            <img data-original="mypublic/images/quality_consistency.gif">
+                            <h4>质量与一致性</h4>
+                            <span>自主设计与建造</span>
+                        </li>
+                        <li class="col-md-4">
+                            <img data-original="mypublic/images/picture_perfect.gif">
+                            <h4>更佳画面</h4>
+                            <span>实时系统调整</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="tedian_ip5_bottom">
+                    <p>我们都看过电影。但是在IMAX®影院看电影却是另一番体验，我们称之为IMAX 观影体验（The IMAX Experience ®）。我们影院内的每个元素都按严格标准进行规划、设计和定位，以创造更震撼的体验。该技术便是我们的影院几何学，它确保每次灯光熄灭后所展现的电影魔力。</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="tedian_ip6">
+            <div class="tedian_ip6_con">
+                <div class="tedian_ip6_top">
+                    <h4>摄影机</h4>
+                    <h1>电影</h1>
+                </div>
+                <div class="tedian_ip6_c">
+                    <ul class="row">
+                        <li class="col-md-4">
+                            <img data-original="mypublic/images/highest_resolution.gif">
+                            <h4>远程监控</h4>
+                            <span>全天候监控，以实现更佳性能</span>
+                        </li>
+                        <li class="col-md-4">
+                            <img data-original="mypublic/images/more_image.gif">
+                            <h4>质量与一致性</h4>
+                            <span>自主设计与建造</span>
+                        </li>
+                        <li class="col-md-4">
+                            <img data-original="mypublic/images/highest_quality_3d.gif">
+                            <h4>更佳画面</h4>
+                            <span>实时系统调整</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="tedian_ip6_bottom">
+                    <p>一项曾经登顶珠穆朗玛峰、探底深海甚至遨游过太空的先进技术。40多年来，IMAX摄影机不断超越工程学的极限，作为迄今为止表现优异的电影制作工具而闻名业内。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer style="width: 100%;height: 260px;background-color: #222;color: #fff;text-align: center;padding-top: 80px;position: fixed;bottom: 0;">
+        <div>
+            <ul></ul>
+            <p>IMAX®和The IMAX Experience®是IMAX公司的注册商标</p>
+            <p>使用条款 隐私政策</p>
+            <p>沪ICP备11045714号 沪公网安备 31010102002067号</p>
+        </div>
+    </footer>
+    <script type="text/javascript">
+    	
+		$(function(){
+			$("img").lazyload({
+				// effect:'fadeIn',
+				load: true,
+			});
+		})
+	</script>
+   <script type="text/javascript" src="mypublic/libs/jquery-min.js"></script>
+    <script type="text/javascript" src="mypublic/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="mypublic/js/index.js"></script>
+</body>
+
+</html>

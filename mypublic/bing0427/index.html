@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    <link rel="stylesheet" href="data/style.css" />
+
+    <script type="text/javascript">
+    window.onload = function(){
+      LandingJs.start({
+        slide: true,
+        slideCount: 5,
+        countdown: true,
+        countdownTime: '2014,12,1',
+        brand: 'Welcome to you',
+        description: '',
+        brief: ''
+      });
+    }
+
+    </script>
+  </head>
+  <body>
+    <div id="blur"></div>
+      <div id="container">
+        <h1></h1>
+        <h4></h4>
+        <form action="../../yingdan.html" method="post">
+          <input type="text" name="subscribe" id="subscribe" placeholder="Enter your zhanghao here ..." />
+          <input type="submit" name="notify" id="notify" value="submit Me" />
+        </form>
+        <p id="brief"></p>
+        <div id="countdown">
+         
+        </div>
+        <p id="copyright"></p>
+      </div>
+    
+  <script src="data/countdown.min.js"></script>  
+  <script src="landing.min.js"></script>
+  </body>
+</html>

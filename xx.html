@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>详情</title>
+    <script src="mypublic/libs/jquery.min.js"></script>
+    <link rel="stylesheet" href="mypublic/css/xx.css" type="text/css">
+
+    <link rel="stylesheet" type="text/css" href="mypublic/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="mypublic/css/common.css">
+
+    <script type="text/javascript">
+    var i = 1;
+    var myttindex = decodeURI(window.location.search);
+    // var aa=encodeURL(myttindex);
+    // alert(decodeURI(myttindex));
+    $.ajax({
+        type: 'get',
+        //url:'http://huaqingqing.github.io/animate/params.json',
+        // url: 'http://127.0.0.1:8080/database/database.json',
+        url: 'https://xinkaiwen.github.io/mydatabase/params.json',
+        
+        dataType: 'json',
+        // jsonp: 'callback',
+        // jsonpCallback: "successCallback",
+        success: function(data) {
+            var aa = myttindex.indexOf("=") + 1;
+            var relids = myttindex.substring(aa);
+            var relid = relids.split(",")[0];
+
+            if (relids === '') {
+                $("<div class='row emptyshopping'>你还没有添加影单<a href='./shopping.html'>马上去看看？</a></div>").appendTo($(".dingdan_ip1_right"));
+            }
+            console.log(relid);
+            var j=null;
+            for (var i = 0; i < data.length; i++) {
+               
+                // console.log(data[i].name);
+                if (relid===data[i].name) {
+                    addContent(data[i].src)
+                }
+               
+            }
+
+
+
+        },
+        error: function(XMLHttpRequest, textStatus, errorThrown) {
+            var a = XMLHttpRequest.responseText;
+
+
+        }
+    });
+    function addContent(src){
+        $("<img class='carousel-image' src="+src+" style='width: 100%;height: 100%;border-radius: 100%;border: 5px solid #ccc;box-shadow: 2px 3px 10px 5px rgba(0,0,255,0.6)'>").appendTo(".carousel-feature1 a")
+        $("<a href='javascript:'><img class='carousel-image' src="+src+" style='width: 100%;height: 100%;border-radius: 100%;border: 5px solid #ccc;box-shadow: 2px 3px 10px 5px rgba(0,0,255,0.6);'></a>").appendTo(".carousel-feature2 a")
+        $("<img class='carousel-image' src="+src+" style='width: 100%;height: 100%;border-radius: 100%;border: 5px solid #ccc;box-shadow: 2px 3px 10px 5px rgba(0,0,255,0.6);'></a>").appendTo(".carousel-feature3 a");
+        $(document).ready(function() {
+       $("#mycarousel").featureCarousel({
+            autoPlay: 1000,
+            trackerIndividual: false,
+            trackerSummation: false,
+            topPadding: 100,
+            smallFeatureWidth: .5,
+            smallFeatureHeight: .5,
+            sidePadding: 0,
+            smallFeatureOffset: 100
+        }); 
+    });
+
+    }
+    
+    </script>
+    <script src="mypublic/libs/jquery.feature.js"></script>
+
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-default " id="nav" style="position: fixed;top: 0;z-index: 999999;width: 100%;height: 70px;">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="navbar-header col-lg-7  col-md-6 col-sm-8 col-xs-8">
+                        <a class="navbar-brand" href="#"><img src="mypublic/images/logo1.png" style="height: 50px;margin-top: -5px"></a>
+                    </div>
+                    <div class="col-lg-3 col-md-4 hidden-sm hidden-xs leaf1">
+                        <ul class="nav navbar-nav col-md-12 mynav">
+                            <li><a href="./index.html">影院首页</a></li>
+                            <li><a href="./tedian.html">影院介绍</a></li>
+                            <li><a href="./shopping.html">最新电影</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-4" style="text-align: center;">
+                        <ul class="nav navbar-nav col-md-12 col-sm-12 col-xs-12 row">
+                            <li class="col-xs-6"><a href="./yingdan.html">我的影单</a></li>
+                            <li class="col-xs-6"><a href="" id="ss">搜索</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="sshidden">
+                    <div class="searchbox mt1">
+                        <div class="search w960 center">
+                            <form name="formsearch">
+                                <div class="form">
+                                    <div class="form_left">
+                                        <div class="form_right">
+                                            <div id="searchtype" class="hidden-sm hidden-xs">
+                                                <div id="searchvalue">全部素材</div>
+                                                <div id="boult">▼</div>
+                                                <ul id="valuelist">
+                                                    <!-- style="display:none" -->
+                                                    <li title="1">全部素材</li>
+                                                    <li title="4">图片/壁纸</li>
+                                                    <li title="2">矢量</li>
+                                                    <li title="3">PSD</li>
+                                                    <li title="7">字体</li>
+                                                    <li title="5">网页模板</li>
+                                                    <li title="6">图标/Icon</li>
+                                                    <li title="10">PPT</li>
+                                                    <li title="9">音效</li>
+                                                    <li title="8">三维/3D</li>
+                                                    <li title="11">Flash</li>
+                                                    <li title="12">网页代码</li>
+                                                    <li title="13">笔刷/其他</li>
+                                                </ul>
+                                            </div>
+                                            <!-- <h4>搜索</h4> -->
+                                            <div class="ssk">
+                                                <input name="keyword" type="text" autocomplete="off" class="search-keyword" id="search-keyword" value="输入关键词" onfocus="if(this.value=='输入关键词'){this.value='';}" onblur="if(this.value==''){this.value='输入关键词';}" />
+                                                <button type="submit" class="search-submit" onclick="return checkinput()">
+                                                    搜索</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <ul id="hotwords" class="hotwords">
+                                        <!-- style="display:none" -->
+                                        <li class="hwtitle">每日热词TOP10：</li>
+                                        <li><a href='#'><h4>独立日：卷土重来</h4><span>13776次搜索</span></a></li>
+                                        <li><a href='#'><h4>海底总动员2：多莉去哪儿</h4><span>7821次搜索</span></a></li>
+                                        <li><a href='#'><h4>魔兽</h4><span>7783次搜索</span></a></li>
+                                        <li><a href='#'><h4>X战警：天启</h4><span>7669次搜索</span></a></li>
+                                        <li><a href='#'><h4>忍者神龟2：破影而出</h4><span>7490次搜索</span></a></li>
+                                        <li><a href='#'><h4>寒战Ⅱ</h4><span>7106次搜索</span></a></li>
+                                        <li><a href='#'><h4>快手枪手快枪手</h4><span>7793次搜索</span></a></li>
+                                        <!-- <li><a href='#'><h4>泰山归来：险战丛林</h4><span>7106次搜索</span></a></li>
+                        <li><a href='#'><h4>星际迷航：超越</h4><span>7106次搜索</span></a></li>
+                        <li><a href='#'><h4>X特遣队</h4><span>7106次搜索</span></a></li>
+                        <li><a href='#'><h4>深水地平线</h4><span>7106次搜索</span></a></li>
+                        <li><a href='#'><h4>奇异博士</h4><span>7106次搜索</span></a></li> -->
+                                    </ul>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="row hidden-lg hidden-md ">
+                    <ul class="nav navbar-nav col-sm-12 col-xs-12 mynav row " style="text-align: center;border-top: 1px solid #ccc;margin-top: 20px;">
+                        <li class="col-sm-4 col-xs-4"><a href="./index.html">影院首页</a></li>
+                        <li class="col-sm-4 col-xs-4"><a href="./tedian.html">影院介绍</a></li>
+                        <li class="col-sm-4 col-xs-4"><a href="./shopping.html">最新动态</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="carousel-container">
+        <div id="mycarousel">
+            <div class='carousel-feature carousel-feature1'>
+                <!-- <a href='javascript:'><img class='carousel-image' src="mypublic/images/shopping_ksqskqs.jpg" style="border-radius: 100%;border: 5px solid #ccc;box-shadow: 2px 3px 10px 5px rgba(0,0,255,0.6);"></a> -->
+                <a href='javascript:'></a>
+            </div>
+            <div class='carousel-feature carousel-feature2'>
+                <!-- <a href='javascript:'><img class='carousel-image' src="mypublic/images/shopping_ksqskqs.jpg " style="width: 100%;height: 100%;border-radius: 100%;border: 5px solid #ccc;box-shadow: 2px 3px 10px 5px rgba(0,0,255,0.6);"></a> -->
+                <a href='javascript:'></a>
+            </div>
+            <div class='carousel-feature carousel-feature3'>
+                <a href='javascript:'></a>
+                
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="mypublic/libs/jquery-min.js"></script>
+</body>
+
+</html>
